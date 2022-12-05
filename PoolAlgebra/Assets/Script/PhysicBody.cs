@@ -8,6 +8,7 @@ public class PhysicBody : MonoBehaviour
     [SerializeField] Vector3 velocity = Vector3.zero;
     [SerializeField] float aceleration = 0.0f;
     [SerializeField, Range(0.001f, 50)] float mass = 5.0f;
+
     [SerializeField] float force = 15.0f;
     [SerializeField] float radius = 5.0f;
 
@@ -44,19 +45,15 @@ public class PhysicBody : MonoBehaviour
         if(!isStatic) transform.position += amount;
     }
      
-    /// <summary>
+    
     /// Calcula la friccion con el aire teniendo en cuenta el radio de la bola.
-    /// </summary>
-    /// <param name="radius"></param>
-    /// <returns></returns>
     float GetFrictionAirForce(float radius) //Formula de rozamiento con el aire: Fr= CD * 1/2 * ρf * Rd²/4
     {
         return constantAirFriction * 0.5f * airDensity * (radius * radius) / 4;
     }
 
-    /// <summary>
+
     /// Aplica las fuerzas de rozamiento con el aire y el rozamiento con la mesa
-    /// </summary>
     void Movement()
     {
         aceleration -= coefficientFriction * Time.deltaTime; //Se le aplica el rozamiento de la mesa a la velocidad, esto para simular la "friccion con la mesa"
