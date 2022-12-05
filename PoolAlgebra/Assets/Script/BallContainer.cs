@@ -49,18 +49,18 @@ public class BallContainer : MonoBehaviour
         }
         else if (go.CompareTag("Ball8"))
         {
-            //if (transform.childCount >= ballsNeeded)
-            //{
-            //    //GANO
-            //    Debug.LogWarning($"gano {gameObject.name}");
-            //    onWin?.Invoke();
-            //}
-            //else
-            //{
-            //    //PERDIO
-            //    Debug.LogWarning($"perdio {gameObject.name}");
-            //    onLose?.Invoke();
-            //}
+            if (transform.childCount >= ballsNeeded)
+            {
+                //GANO
+                Debug.LogWarning($"gano {gameObject.name}");
+                onWin?.Invoke();
+            }
+            else
+            {
+                //PERDIO
+                Debug.LogWarning($"perdio {gameObject.name}");
+                onLose?.Invoke();
+            }
 
             physicsWorld.RemoveFromWorld(go.GetComponent<PhysicCollider>(), physicBody);
             go.transform.SetParent(transform);
